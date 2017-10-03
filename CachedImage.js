@@ -82,7 +82,7 @@ class CachedImage extends React.Component {
     }
   }
 
-  setNativeProps(nativeProps) {
+  setNativeProps = (nativeProps) => {
     try {
       this.refs[CACHED_IMAGE_REF].setNativeProps(nativeProps)
     } catch (e) {
@@ -92,20 +92,20 @@ class CachedImage extends React.Component {
 
 
 
-  safeSetState(newState) {
+  safeSetState = (newState) => {
     if (!this._isMounted) {
       return
     }
     return this.setState(newState)
   }
 
-  handleConnectivityChange(isConnected) {
+  handleConnectivityChange = (isConnected) => {
     this.safeSetState({
       networkAvailable: isConnected,
     });
   }
 
-  processSource(source) {
+  processSource = (source) => {
     const url = _.get(source, ['uri'], null);
     if (ImageCacheProvider.isCacheable(url)) {
       const options = _.pick(this.props, ['useQueryParamsInCacheKey', 'cacheGroup', 'cacheLocation']);
@@ -160,7 +160,7 @@ class CachedImage extends React.Component {
     });
   }
 
-  renderLoader() {
+  renderLoader = () => {
     const imageProps = getImageProps(this.props);
     const imageStyle = [this.props.style, styles.loaderPlaceholder];
 
